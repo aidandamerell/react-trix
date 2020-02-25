@@ -159,7 +159,8 @@ export class TrixEditor extends React.Component<TrixEditorProps, TrixEditorState
       }
     }
     //form.append("Content-Type", "multipart/form-data");
-    form.append("file", file);
+    const fileParamName = props.fileParamName || "file"
+    form.append(fileParamName, file);
     xhr = new XMLHttpRequest();
     xhr.open("POST", this.props.uploadURL, true);
     xhr.upload.onprogress = (event) => {
